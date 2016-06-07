@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StudentKitchen</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="studentKitchen" ng-controller="MainCtrl">
+  <div ng-repeat="recipe in recipes | orderBy: '-upvotes'">
+    <h3>{{ recipe.title }}</h3>
+    <span ng-click="incrementUpvotes(recipe)">^</span>
+     - upvotes: {{recipe.upvotes}}
+    <br>
+    Ingredients:
+    <ul ng-repeat="ingredient in recipe.ingredients">
+      <li>{{ ingredient.element }}</li>
+    </ul>
+    <br>
+  </div>
+  <br>
+  <form ng-submit="addRecipe()">
+    Title:
+    <input type="text" ng-model="title"></input>
+    <button type="submit">Post</button>
+  </form>
+    <br>
+    <ul ng-repeat="ingredient in ingredients track by $index">
+      <li>{{ingredient.element}}</li>
+    </ul>
+    Ingredient: <input type="text" ng-model="ingredient"></input>
+    <button ng-click="addIngredient()">Add</button>
+</body>
+</html>
