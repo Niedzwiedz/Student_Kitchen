@@ -1,0 +1,29 @@
+<div class="page-header">
+    <h3>
+        {{recipe.title}}
+    </h3>
+</div>
+Ingredients:
+<ul ng-repeat="ingredient in recipe.ingredients">
+    <li> {{ingredient.element}} </li>
+</ul>
+<br>
+<div>
+    {{recipe.description}}
+</div>
+Comments:
+<div ng-repeat="comment in recipe.comments | orderBy:'-upvotes'">
+    {{comment.author}} -
+    <span ng-click="incrementUpvotes(comment)">^</span>
+    {{comment.upvotes}}
+    <br>
+    {{comment.body}}
+</div>
+<br>
+<form ng-submit="addComment()">
+    <h3>Add your comment!</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+</form>
