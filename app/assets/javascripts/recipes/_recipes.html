@@ -13,7 +13,6 @@ Ingredients:
 </div>
 Comments:
 <div ng-repeat="comment in recipe.comments | orderBy:'-upvotes'">
-    {{comment.author}} -
     <span ng-click="incrementUpvotes(comment)">^</span>
     {{comment.upvotes}}
     <br>

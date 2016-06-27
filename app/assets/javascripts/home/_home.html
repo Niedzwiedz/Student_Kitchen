@@ -26,7 +26,7 @@
                 {{ recipe.description }}
             </div>
             <span>
-                <a href="#/recipes/{{$index}}">Comments</a>
+                <a href="#/recipes/{{recipe.id}}">Comments</a>
             </span>
             <br>
         </div>
@@ -46,6 +46,7 @@
             <textarea rows="4" ng-model="description" ></textarea>
         </form>
         <br>
+        <form ng-submit="addIngredients()">
         <ul ng-repeat="ingredient in ingredients track by $index">
             <li>{{ingredient.element}}
                 <span ng-click="removeIngredient($index)">x</span>
@@ -54,5 +55,7 @@
         Ingredient:<br>
         <input type="text" ng-model="ingredient"></input>
         <button ng-click="addIngredient()">Add</button>
+        <button type="submit" >Submit</button>
+        </form>
     </div>
 </div>

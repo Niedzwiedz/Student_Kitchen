@@ -1,21 +1,22 @@
 angular.module('studentKitchen')
 .controller('RecipesCtrl', [
     '$scope',
-    '$stateParams',
     'recipes',
-    function($scope, $stateParams, recipes){
-        $scope.recipe = recipes.recipes[$stateParams.id];
-        $scope.id = $stateParams.id
-        $scope.incrementUpvotes = function(comment) {
-            comment.upvotes += 1;
-        };
+    'recipe',
+    function($scope, recipes, recipe){
+        $scope.recipe = recipe;
         $scope.addComment = function(){
             if($scope.body === ''){ return; }
-            $scope.recipe.comments.push({
+            recipes.addComment(recipe.id, {
                 body: $scope.body,
-                author: 'user',
-                upvotes: 0
+            }).success(function(objects) {
+                objects.comment.upvotes = 0;
+                $scope.recipe.comments.push(objects.comment);
+                alert(JSON.stringify(objects.comment, null, 4));
             });
             $scope.body='';
+        };
+        $scope.incrementUpvotes = function(comment) {
+            recipes.upvoteComment(recipe, comment);
         };
     }]);
