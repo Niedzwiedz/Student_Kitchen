@@ -11,7 +11,7 @@ function($scope, recipes){
     };
     $scope.addIngredients = function(){
         alert(JSON.stringify($scope.ingredients, null, 4));
-        recipes.createIngredients(1, { ingredients: $scope.ingredients});
+        recipes.createIngredients({ ingredients: $scope.ingredients});
     };
     $scope.removeIngredient = function(index){
         $scope.ingredients.splice(index, 1);
@@ -22,13 +22,15 @@ function($scope, recipes){
         recipes.create({
             title: $scope.title,
             upvotes: 0,
-            description: $scope.description
+            description: $scope.description,
             //comments: [
             //    {author: 'Joe', body: 'Cool Recipe!', upvotes: 0},
             //    {author: 'Bob', body: 'It could be better', upvotes: 0}]
+            ingredients: $scope.ingredients
         });
         $scope.title = '';
         $scope.description = '';
+        $scope.ingredients = [];
     };
     $scope.incrementUpvotes = function(recipe) {
         recipes.upvote(recipe);

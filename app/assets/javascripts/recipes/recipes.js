@@ -9,15 +9,18 @@ angular.module('studentKitchen')
             });
         };
         o.create = function(recipe) {
+            alert(JSON.stringify(recipe, null, 4));
             return $http.post('/recipes.json', recipe).success(function(data){
                 alert(JSON.stringify(data, null, 4));
+                o.createIngredients(data.id, {ingredients: recipe.ingredients});
+                data.upvotes = 0;
+                data.ingredients = recipe.ingredients;
                 o.recipes.push(data);
             });
         };
-        o.createIngredients = function(id, ingredients) {
+        o.createIngredients = function(id ,ingredients) {
             alert(JSON.stringify(ingredients, null, 4));
-            return $http.post('/recipes/' + id + '/ingredients/', ingredients);
-            alert(JSON.stringify(ingredients, null, 4));
+            return $http.post('/recipes/' + id + '/ingredients/', ingredients)
         };
         o.upvote = function(recipe) {
             return $http.put('/recipes/' + recipe.id + '/upvote.json')
