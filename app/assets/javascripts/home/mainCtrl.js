@@ -1,4 +1,4 @@
-angular.module('studentKitchen', ['ui.router', 'templates'])
+angular.module('studentKitchen')
 .controller('MainCtrl', ['$scope', 'recipes',
 function($scope, recipes){
     $scope.ingredients = [{element: 'ing1'},

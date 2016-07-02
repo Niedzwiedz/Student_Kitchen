@@ -39,6 +39,8 @@ gem 'ngannotate-rails'
 
 gem 'angular_rails_csrf'
 
+gem 'devise', '~> 3.4.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

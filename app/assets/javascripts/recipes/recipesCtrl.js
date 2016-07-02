@@ -8,7 +8,7 @@ angular.module('studentKitchen')
         $scope.addComment = function(){
             if($scope.body === ''){ return; }
             recipes.addComment(recipe.id, {
-                body: $scope.body,
+              body: $scope.body
             }).success(function(objects) {
                 objects.comment.upvotes = 0;
                 $scope.recipe.comments.push(objects.comment);

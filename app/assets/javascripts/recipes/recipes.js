@@ -20,7 +20,7 @@ angular.module('studentKitchen')
         };
         o.createIngredients = function(id ,ingredients) {
             alert(JSON.stringify(ingredients, null, 4));
-            return $http.post('/recipes/' + id + '/ingredients/', ingredients)
+          return $http.post('/recipes/' + id + '/ingredients/', ingredients);
         };
         o.upvote = function(recipe) {
             return $http.put('/recipes/' + recipe.id + '/upvote.json')
@@ -43,4 +43,4 @@ angular.module('studentKitchen')
                 });
         };
         return o;
-    }])
+    }]);

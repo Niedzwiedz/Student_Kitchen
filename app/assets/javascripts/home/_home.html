@@ -6,6 +6,7 @@
             <div class="row" style="background:green">
                 <div class="col-xs-5" style="background:orange">
                     <h2>{{ recipe.title }}</h2>
+                    <p>author: {{recipe.user.username}}</p>
                 </div>
                 <div class="col-xs-6" style="background:yellow">
                     <span ng-click="incrementUpvotes(recipe)">^</span>
@@ -35,7 +36,6 @@
     <div class="col-xs-5">
         <h2>Add your Recipe!</h2>
         <form ng-submit="addRecipe()">
-            {{ ingredients }}
             <button type="submit">Post Recipe!</button>
             <br>
             Name:
@@ -46,13 +46,14 @@
             <br>
             <textarea rows="4" ng-model="description" ></textarea>
             <br>
+            Ingredients:
             <ul ng-repeat="ingredient in ingredients track by $index">
                 <li>{{ingredient.element}}
                     <span ng-click="removeIngredient($index)">x</span>
                 </li>
             </ul>
         </form>
-        Ingredient:<br>
+        Add Ingredient:<br>
         <input type="text" ng-model="ingredient"></input>
         <button ng-click="addIngredient()">Add</button>
     </div>
